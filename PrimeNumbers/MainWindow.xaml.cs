@@ -45,17 +45,27 @@ namespace PrimeNumbers
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             tbContains.IsEnabled = false;
-            ContainCheck(tbContains.Text);
+            int contained = 0;
+            bool isInt = int.TryParse(tbContains.Text, out contained);
+            if (isInt)
+            {
+                ContainCheck(contained);
+            }
+            else
+            {
+                MessageBox.Show("Zadejte číslo");
+            }
+
         }
-        public void ContainCheck(string x)
+        public void ContainCheck(int x)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-
+            tbTime1.Text = "Running...";
             bool first = true;
             for (int i = 0; i < 10000; i++)
             {
-                if (IsPrime(i) && i.ToString().Contains(x))
+                if (IsPrime(i) && i.ToString().Contains(x.ToString()))
                 {
                     if (first)
                     {
@@ -79,23 +89,36 @@ namespace PrimeNumbers
         {
             tbContains.IsEnabled = true;
             Tb1.Text = "";
+            tbContains.Text = "";
         }
 
         private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
         {
             tbMin.IsEnabled = false;
             tbMax.IsEnabled = false;
-            InRange(tbMin.Text,tbMax.Text);
+            int min = 0;
+            int max = 0;
+            bool isMinInt = int.TryParse(tbMin.Text, out min);
+            bool isMaxInt = int.TryParse(tbMax.Text, out max);
+            if (isMaxInt && isMinInt)
+            {
+                InRange(min,max);
+            }
+            else
+            {
+                MessageBox.Show("Zadejte číselný rozsah");
+            }
         }
 
-        private void InRange(string min, string max)
+        private void InRange(int min, int max)
         {
             bool first = true;
+            tbTime2.Text = "Running...";
             try
             {
                 Stopwatch stopWatch = new Stopwatch();
                 stopWatch.Start();
-                for (int i = int.Parse(min); i < int.Parse(max); i++)
+                for (int i = min; i < max; i++)
                 {
                     if (IsPrime(i))
                     {
@@ -128,12 +151,15 @@ namespace PrimeNumbers
         {
             tbMin.IsEnabled = true;
             tbMax.IsEnabled = true;
+            Tb2.Text = "";
+            tbMin.Text = "";
+            tbMax.Text = "";
         }
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
             RepeatCheck(tbContains.Text);
-        }
+        } // Nefunguje
 
         private void RepeatCheck(string x)
         {
@@ -146,12 +172,12 @@ namespace PrimeNumbers
                     {
                         if (first)
                         {
-                            Tb1.Text = i.ToString();
+                            Tb3.Text = i.ToString();
                             first = false;
                         }
                         else
                         {
-                            Tb1.Text += $", {i}";
+                            Tb3.Text += $", {i}";
                         }
                     }
 
