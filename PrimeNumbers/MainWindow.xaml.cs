@@ -158,31 +158,42 @@ namespace PrimeNumbers
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            RepeatCheck(tbContains.Text);
+            RepeatCheck();
         } // Nefunguje
 
-        private void RepeatCheck(string x)
+        private void RepeatCheck()
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            tbTime3.Text = "Running...";
             bool first = true;
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 50000; i++)
             {
+
                 if (IsPrime(i))
                 {
-                    if (true)
+                    char[] split = i.ToString().ToCharArray();
+                    foreach (var item in split)
                     {
-                        if (first)
+                        if (i.ToString().Contains($"{item}{item}{item}"))
                         {
-                            Tb3.Text = i.ToString();
-                            first = false;
-                        }
-                        else
-                        {
-                            Tb3.Text += $", {i}";
+                            if (first)
+                            {
+                                Tb3.Text = i.ToString();
+                                first = false;
+                            }
+                            else
+                            {
+                                Tb3.Text += $", {i}";
+                            }
+                            break;
                         }
                     }
 
                 }
             }
+            stopWatch.Stop();
+            tbTime3.Text = stopWatch.Elapsed.ToString(@"ss\:fff");
         }
 
         private void CheckBox_Unchecked_2(object sender, RoutedEventArgs e)

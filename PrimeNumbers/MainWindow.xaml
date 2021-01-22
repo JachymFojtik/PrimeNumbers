@@ -30,7 +30,7 @@
         <TextBlock x:Name="tbTime3" Grid.Column="2" HorizontalAlignment="Left" Margin="73,52,0,0" TextWrapping="Wrap" Text="Nejde" VerticalAlignment="Top" Width="144" Height="34" RenderTransformOrigin="0.468,0.504" FontSize="18" Background="#FFF1B81F" Grid.Row="2"/>
 
 
-        <CheckBox x:Name="CheckBox3" Grid.Column="0" Grid.Row="2" Content="min. 3 stejná čísla za sebou " Width="500" Height="26" FontSize="18" Checked="CheckBox_Checked_2" Unchecked="CheckBox_Unchecked_2"/>
+        <CheckBox x:Name="CheckBox3" Grid.Column="0" Grid.Row="2" Content="min. 3 stejná čísla za sebou "  Height="26" FontSize="18" Checked="CheckBox_Checked_2" Unchecked="CheckBox_Unchecked_2"/>
         <TextBox x:Name="Tb3" TextWrapping="Wrap" Background="#FFF1B81F" Grid.Column="1" Grid.Row="2"  FontSize="18"/>
         <TextBlock x:Name="tbTime2" Grid.Column="2" HorizontalAlignment="Left" Margin="73,53,0,0" TextWrapping="Wrap" Text="Not Started" VerticalAlignment="Top" Width="144" Height="34" RenderTransformOrigin="0.468,0.504" FontSize="18" Background="#FFE25EA0" Grid.Row="1"/>
 
